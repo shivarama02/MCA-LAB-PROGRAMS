@@ -1,4 +1,4 @@
-PYTHON PROGRAMING CYCLE 1
+# PYTHON PROGRAMING CYCLE 1
 
 1. Area and Perimeter of a Circle 
 2. Swap 2 Numbers 
@@ -11,7 +11,7 @@ PYTHON PROGRAMING CYCLE 1
 9. To check whether an year is leap year or not 
 10. To find the roots of a quadratic equation  
 
-PYTHON PROGRAMING CYCLE 2
+# PYTHON PROGRAMING CYCLE 2
 
 1.  GCD of 2 numbers 
 2. Exchange first and last characters in a string 
@@ -20,13 +20,16 @@ PYTHON PROGRAMING CYCLE 2
 5.  Character frequency in a string 
 6. Add ‘ing’ at the end of a given string. If it already ends with ‘ing’, 
 add ‘ly’ 
-7. Display the given pyramid with step number accepted from user. 
+7. Display the given pyramid with step number accepted from user.
+```
  eg:- N=4
        1
        2 4
        3 6 9
        4 8 12 16
-8. Construct the pattern using nested loop 
+```
+9. Construct the pattern using nested loop 
+```
 *
 * *
 * * *
@@ -36,5 +39,6 @@ add ‘ly’
 * * *
 * *
 *
+```
 9. Create a single string from two strings,swapping the character at 
 position 1
