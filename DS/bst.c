@@ -38,8 +38,23 @@ void insert(){
     }
 }
 
-void delete(){
-    printf("deleted");
+void search(){
+    int value;
+    printf("Enter the data to be deleted: ");
+    scanf("%d",&value);
+    temp = root;
+    while(temp!=NULL){
+        if(temp->data == value){
+            return temp;
+        }
+        else if(value < temp->data){
+            temp = temp->left;
+        }
+        else{
+            temp = temp->right;
+        }
+        return NULL;
+    }
 }
 
 void inorder(struct node *root){
