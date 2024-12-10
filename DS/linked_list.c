@@ -6,54 +6,69 @@ void insatend();
 void insatpos();
 void display();
 void delete();
-                                    /* creating node structure*/ 
-typedef struct node{                /* typedef used to refer 'struct node' as 'node' */ 
-    int data;                                                               /* | */ 
-    struct node* next;                                                      /* | */ 
-}node;            /* <--------------------------------------------------------- */ 
 
-node* head = NULL;
-node *current;
+struct node{              
+    int data;                                                   
+    struct node* next;                                               
+};            
+
+struct node *head = NULL, *current, *newnode, *temp;
+
 
 void main(){
-    int is_running=1, ch;
-    while(is_running){
-        printf("\n\n1.Insert at beginning\n2.Insert at end\n3.Insert at position\n4.Delete\n5.Display\n6.Exit\nEnter your choice: ");
-        scanf("%d", &ch);
-        switch(ch)
+    int  choice;
+    while(1){
+        printf("\n\n1.INSERT\n2.DELETE\n3.DISPLAY\n4.EXIT\n\nEnter your choice: ");
+        scanf("%d", &choice);
+        switch(choice)
         {
         case 1:
-            insatbeg();                             /* insert at begining*/ 
+            insert();                         
             break;
         case 2:
-            insatend();                            /* insert at end */ 
+            delete();                            
             break;
         case 3:
-            insatpos();                            /* insert to specified position */ 
+            display();                            
             break;
         case 4:
-            delete();                                /* deleting a node */ 
-            break;
-        case 5:
-            display();                                 /* display all the nodes   */ 
-            break;
-        case 6:
-            is_running = 0;
+            exit(0);
             break;
         default:
-            printf("\nWrong Choice :(\n");
+            printf("\nChoose a valid operation!");
             break;
         }
     }
 }
-
+void insert(){
+    int choose;
+    while(1){
+        printf("\n1.Insert at beginning\n2.Insert at end\n3.Insert at position\n4.Back main menu\n\nChoose an operation: ");
+        scanf("%d",&choose);
+        switch(choose)
+        {
+        case 1:
+            insatbeg();
+            break;
+        case 2:
+            insatend();
+            break;
+        case 3:
+            insatpos();
+            break;
+        case 4:
+            main();
+            break;
+        default:
+            printf("\nChoose a valid operation!");
+            break;
+        }
+    }
+}
 void insatbeg(){
-    node* newnode;
-    newnode = (node*)malloc(sizeof(node));
-    int data;
+    newnode = (struct node*)malloc(sizeof(struct node));
     printf("\nEnter the data to be added: ");
-    scanf("%d", &data);
-    newnode->data = data;
+    scanf("%d", &newnode->data);
     newnode->next = NULL;
     if(head==NULL){
         head = newnode;
@@ -65,12 +80,9 @@ void insatbeg(){
 }
 
 void insatend(){
-    node* newnode;
-    newnode = (node*)malloc(sizeof(node));
-    int data;
+    newnode = (struct node*)malloc(sizeof(struct node));
     printf("\nEnter the data to be added: ");
-    scanf("%d", &data);
-    newnode->data = data;
+    scanf("%d", &newnode->data);
     newnode->next = NULL;
     if(head==NULL){
         head = newnode;
@@ -85,26 +97,24 @@ void insatend(){
 }
 
 void insatpos(){
-    node* newnode;
-    newnode = (node*)malloc(sizeof(node));
-    int data, pos;
+    newnode = (struct node*)malloc(sizeof(struct node));
     printf("\nEnter the data to be added: ");
-    scanf("%d", &data);
-    newnode->data = data;
+    scanf("%d", &newnode->data);
     newnode->next = NULL;
-    printf("\nEnter the position to insert the data: ");
+    int pos;
+    printf("\nEnter the position: ");
     scanf("%d", &pos);
     if(head==NULL){
         head = newnode;
     }
-    else if(pos == 1){                             /* if entering in position of head */ 
+    else if(pos == 1){                          
         newnode->next = head;
         head = newnode;
     }
     else{
         current = head;
-        for(int i=2; i<pos; i++){                    /* i = 2 since current = head and next node is second position  */ 
-            if(current->next == NULL){                     /* i<pos => 2<2 so current still at head and next node is 2nd */ 
+        for(int i=2; i<pos; i++){                  
+            if(current->next == NULL){                
                 break;
             }
             current = current->next;
@@ -126,10 +136,11 @@ void display(){
     else{
         current = head;
         while(current!=NULL){
-            printf("%d ", current->data);
+            printf("%d -> ", current->data);
             current = current->next;
         }
     }
+    printf("NULL");
 }
 
 void delete(){
@@ -155,13 +166,11 @@ void delete(){
             if(current->next == NULL){
                 printf("\n!!There was no node to delete at the position!!\n");
             }
-            else{
-                node *temp;                          /* temp used to free unused space */ 
+            else{                         
                 temp = current->next;
                 current->next = current->next->next;
                 free(temp);
             }
-            
         }
     }
 }

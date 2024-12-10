@@ -21,6 +21,9 @@ int main(){
             case 1:
                 enqueue();
                 break;
+            case 2:
+                dequeue();
+                break;
             case 3:
                 display();
                 break;
@@ -49,18 +52,25 @@ void enqueue(){
 }
 
 void dequeue(){
-    if(rear == NULL){
+    if(front == NULL && rear == NULL){
         printf("\nQueue is empty");
 
     }
-    else{
-        
-        if(front )
+    else {
+        if (front == rear)
+        {
+            temp = front;
+            front = NULL;
+            rear = NULL;
+        }
 
-
-
-        printf("%d is deleted",front->data);
-        front = front->next
+        else
+        {
+            temp = front;
+            front = front->next;
+        }
+        printf("%d is deleted",temp->data);
+        free(temp);
     }
 }
 
