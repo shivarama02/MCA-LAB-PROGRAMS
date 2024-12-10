@@ -51,6 +51,24 @@ void inorder(struct node *root){
     inorder(root->rchild);
 }
 
+void postorder(struct node *root){
+    if(root == NULL){
+        return;
+    }
+    postorder(root->lchild);
+    postorder(root->rchild);
+    printf("%d ->",root->data);
+}
+
+void preorder(struct node *root){
+    if(root == NULL){
+        return;
+    }
+    printf("%d ->",root->data);
+    preorder(root->lchild);
+    preorder(root->rchild);
+}
+
 void display();
 
 void main(){
@@ -80,11 +98,17 @@ void main(){
 void display(){
     while(1){
         int choose;
-        printf("\n1.IN-ORDER\n2.POST-ORDER\n3.PRE-ORDER\n4. BACK TO MAIN\n\nEnter the choice: ");
+        printf("\n1.IN-ORDER\n2.POST-ORDER\n3.PRE-ORDER\n4.BACK TO MAIN\n\nEnter the choice: ");
         scanf("%d",&choose);
         switch(choose){
             case 1:
                 inorder(root);
+                break;
+            case 2:
+                postorder(root);
+                break;
+            case 3:
+                preorder(root);
                 break;
             case 4:
                 main();
