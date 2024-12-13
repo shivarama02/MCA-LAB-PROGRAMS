@@ -38,23 +38,33 @@ void insert(){
     }
 }
 
-void search(){
-    int value;
-    printf("Enter the data to be deleted: ");
-    scanf("%d",&value);
+struct node *search(int value){
     temp = root;
     while(temp!=NULL){
         if(temp->data == value){
+            printf("\n%d found in the tree.\n",temp->data);
             return temp;
         }
         else if(value < temp->data){
-            temp = temp->left;
+            temp = temp->lchild;
         }
         else{
-            temp = temp->right;
+            temp = temp->rchild;
         }
-        return NULL;
     }
+    printf("\n%d not found in the tree.\n",value);
+    return NULL;
+}
+
+struct node *successor(struct node *root){
+    while(root->lchild != NULL){
+        root = root->lchild;
+    }
+    return root;
+}
+
+struct node *delete(){
+    
 }
 
 void inorder(struct node *root){
@@ -84,31 +94,6 @@ void preorder(struct node *root){
     preorder(root->rchild);
 }
 
-void display();
-
-void main(){
-    while(1){
-        int choice;
-        printf("\n1.INSERT\n2.DELETE\n3.DISPLAY\n4.EXIT\n\nEnter the choice: ");
-        scanf("%d",&choice);
-        switch(choice){
-            case 1:
-                insert();
-                break;
-            case 2:
-                delete();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                exit(0);
-                break;
-            default:
-                printf("\nInvalid choice\n");
-        }
-    }
-}
 
 void display(){
     while(1){
@@ -126,10 +111,37 @@ void display(){
                 preorder(root);
                 break;
             case 4:
-                main();
+                return;
+            default:
+                printf("\nInvalid choice\n");
+        }
+    }
+}
+
+void main(){
+    while(1){
+        int choice, value;
+        printf("\n1.INSERT\n2.DELETE\n3.DISPLAY\n4.SEARCH\n5.EXIT\n\nEnter the choice: ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+                insert();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                printf("Enter the data to be searched: ");
+                scanf("%d",&value);
+                search(value);
+                break;
+            case 5:
+                exit(0);
                 break;
             default:
                 printf("\nInvalid choice\n");
         }
     }
 }
+
+
