@@ -11,7 +11,7 @@ struct node *newnode, *root = NULL, *parent, *temp;
 
 void insert(){
     newnode = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the data to be added: ");
+    printf("\nEnter the data to be added: ");
     scanf("%d", &newnode->data);
     newnode->lchild = NULL;
     newnode->rchild = NULL;
@@ -36,6 +36,10 @@ void insert(){
             parent->rchild = newnode;
         }
     }
+}
+
+struct node * delete(){
+    
 }
 
 struct node *search(int value){
@@ -63,8 +67,41 @@ struct node *successor(struct node *root){
     return root;
 }
 
-struct node *delete(){
-    
+struct node *deleteNode(struct node *root, int value){
+    if(root == NULL){
+        printf("\n%d not found in the tree.\n",value);
+        return root;
+    }
+    else if(value < root->data){
+        root->lchild = deleteNode(root->lchild, value);
+    }
+    else if(value > root->data){
+        root->rchild = deleteNode(root->rchild, value);
+    }
+    else{
+        if(root->lchild == NULL && root->rchild == NULL){
+            free(root);
+            return NULL;
+        }
+        else if(root->lchild == NULL){
+            temp = root->rchild;
+            free(root);
+            return temp;
+        }
+        else if(root->rchild == NULL){
+            temp = root->lchild;
+            free(root);
+            return temp;
+        }
+        else{
+            temp = successor(root->rchild);
+            root->data = temp->data;
+            root->rchild = deleteNode(root->rchild, temp->data);
+        }
+    }
+    printf("\n%d is deleted.\n");
+    return root;
+
 }
 
 void inorder(struct node *root){
@@ -126,6 +163,11 @@ void main(){
         switch(choice){
             case 1:
                 insert();
+                break;
+            case 2:
+                printf("Enter the data to be deleted: ");
+                scanf("%d",&value);
+                deleteNode(root,value);
                 break;
             case 3:
                 display();
