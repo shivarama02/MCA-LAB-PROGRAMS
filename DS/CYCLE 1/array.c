@@ -1,7 +1,7 @@
 #include<stdio.h>
 #define MAX 10             /* array max size*/
 
-int array[MAX], end = -1;
+int array[MAX], size = -1;
 
 void display();
 void insert();
@@ -42,13 +42,13 @@ void main(){
 }
 
 void display(){                                  /* Display the array elements */
-    if(end == -1){
+    if(size == -1){
         printf("\nThe array is empty!!\n");
     }
     else{
         printf("\nThe array elements are: ");
 
-        for(int i=0; i<=end; i++){
+        for(int i=0; i<=size; i++){
             printf("%d ", array[i]);
         }
     }
@@ -58,27 +58,27 @@ void insert(){                                   /* Inserting array elements*/
     int n;
     printf("\nHow much elements to add ? : ");
     scanf("%d", &n);
-    if((n+end+1) > MAX){
-        printf("\nNot Enough Space :(\n%d spaces left\n", MAX - end - 1);
+    if((n+size+1) > MAX){
+        printf("\nNot Enough Space :(\n%d spaces left\n", MAX - size - 1);
     }
     else{
-        for(int i=end + 1; i<=end+n; i++){
+        for(int i=size + 1; i<=size+n; i++){
             printf("Enter array[%d] element: ", i);
             scanf("%d", &array[i]);
         }
-        end += n;
+        size += n;
     }
 }
 
 void search(){                                   /* Searching for an array element*/
-    if(end == -1){
+    if(size == -1){
         printf("\nThe array is empty!!\n");
     }
     else{
         int tosearch;
         printf("\nEnter the element to search for: ");
         scanf("%d", &tosearch);
-        for(int i=0; i<=end; i++){
+        for(int i=0; i<=size; i++){
             if(array[i] == tosearch){
                 printf("\n%d found at index %d\n", tosearch, i);
                 return;
@@ -89,21 +89,21 @@ void search(){                                   /* Searching for an array eleme
 }
 
 void delete(){                                      /* Deleting an element from array*/
-    if(end == -1){
+    if(size == -1){
         printf("\nThe array is empty!!\n");
     }
     else{
         printf("\nEnter the index of the element to be deleted: ");
         int index;
         scanf("%d", &index);
-        if(index>end){
+        if(index>size){
             printf("\nThere is no data at that index\n");
         }
         else{
-            for(int i=index; i<end; i++){
+            for(int i=index; i<size; i++){
                 array[i] = array[i+1];
             }
-            end--;
+            size--;
         }
     }
 }
