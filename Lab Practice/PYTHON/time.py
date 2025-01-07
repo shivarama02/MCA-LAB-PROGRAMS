@@ -14,7 +14,7 @@ class time:
         c3.sec = self.sec + other.sec
 
         if c3.sec >= 60:
-            c3.min +=c3.sec // 60
+            c3.min +=c3.min // 60
             c3.sec = c3.sec % 60
         
         if c3.min >=60:
