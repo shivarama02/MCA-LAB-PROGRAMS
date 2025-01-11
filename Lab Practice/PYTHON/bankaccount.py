@@ -1,4 +1,5 @@
-# 2. Create a Bank account with members account number, name, type of account and balance. Write constructor and methods to deposit at the bank and withdraw an amount from the bank.
+# 2. Create a Bank account with members account number, name, type of account and balance.
+# Write constructor and methods to deposit at the bank and withdraw an amount from the bank.
 
 
 class bankaccount:
