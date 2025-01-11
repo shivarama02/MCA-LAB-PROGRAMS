@@ -11,7 +11,23 @@ class rectangle:
     def __lt__(self,other):
         return self.area() < other.area()
 
-rect1=rectangle(10,5)
+rect1=rectangle(2,3)
 rect2=rectangle(8,7)
 
-print(rect1 > rect2)
+print(rect1 < rect2)
+
+# l1=int(input("Enter length of the rectangle1: "))
+# w1=int(input("Enter width of the rectangle1: "))
+# l2=int(input("Enter length of the rectangle2: "))
+# w2=int(input("Enter width of the rectangle2: "))
+
+# rect1 = rectangle(l1, w1)
+# rect2 = rectangle(l2,w2)
+
+# print("Area of rectangle1 is ",rect1.area())
+# print("Area of rectangle2 is ",rect2.area())
+
+# if rect1 > rect2:
+#     print("rectangle1 is greater!")
+# else:
+#     print("rectangle2 is greater!")
