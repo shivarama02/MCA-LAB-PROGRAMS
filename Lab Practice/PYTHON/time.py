@@ -14,19 +14,22 @@ class time:
         c3.sec = self.sec + other.sec
 
         if c3.sec >= 60:
-            c3.min +=c3.min // 60
+            c3.min +=c3.sec // 60
             c3.sec = c3.sec % 60
         
         if c3.min >=60:
-            c3.hour = c3.hour // 60
+            c3.hour += c3.min // 60
             c3.min = c3.min % 60
         
+        if c3.hour >=24:
+            c3.hour = c3.hour % 24
+
         return c3
     
     def display(self):
         print(f"{self.hour} : {self.min} : {self.sec}")
 
-c1 = time(10,23,39)
+c1 = time(12,23,39)
 c2 = time(12,55,38)
 c3 = c1 + c2
 c3.display()
