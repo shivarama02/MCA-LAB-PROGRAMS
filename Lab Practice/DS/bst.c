@@ -38,9 +38,9 @@ struct node* insert(){
     }
 }
 
-struct node* successor(struct node* root){
-    while(root->lchild!=NULL){
-        root=root->lchild;
+struct node* predecessor(struct node* root){
+    while(root->rchild!=NULL){
+        root=root->rchild;
     }
     return root;
 }
@@ -67,12 +67,13 @@ struct node* delete(struct node* root , int value){
             free(root);
             return temp;
         }
-        else if (root->rchild=NULL){
+        else if (root->rchild==NULL){
+            free(root);
             temp=root->lchild;
             return temp;
         }
         else{
-            temp=successor(root->rchild);
+            temp=predecessor(root->rchild);
             root->data=temp->data;
             root->rchild = delete(root->rchild,temp->data);
         }
