@@ -6,7 +6,7 @@
 int queue[MAX],front=-1,rear=-1;
 
 int enqueue(){
-    int data;
+    int data;                                           
     printf("Enter the data to insert: ");
     scanf("%d",&data);
     if(rear>=MAX-1){
