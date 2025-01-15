@@ -23,21 +23,36 @@ int main() {
         scanf("%d",&arr2[j]);
     }
 
-    int merged[n1 + n2];
+    int n3=n1+n2;
+    int merged[n3];
     for(int i=0;i<n1;i++){
         merged[i]=arr1[i];
     }
     for(int i=0;i<n2;i++){
-        merged[n1+i]=arr2[n2-1-i];
+        merged[n1+i]=arr2[i];
     }
-
     printf("Merged array:\n");
-    for (int i = 0; i < (n1 + n2); i++) {
+    for (int i = 0; i < (n3); i++) {
         printf("%d ", merged[i]);
     }
     printf("\n");
 
-    printf("Size of merged array: %d\n", n1 + n2);
+
+    int revmerged[n3];
+    for(int i=0;i<n1;i++){
+        revmerged[i]=arr1[i];
+    }
+
+    for(int i=0;i<n2;i++){
+        revmerged[n1+i]=arr2[n2-1-i];
+    }
+    printf("Reverse Merged array:\n");
+    for (int i = 0; i < (n3); i++) {
+        printf("%d ", revmerged[i]);
+    }
+    printf("\n");
+
+    printf("Size of merged array: %d\n", n3);
 
     return 0;
 }
