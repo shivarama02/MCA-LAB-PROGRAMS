@@ -38,7 +38,7 @@ struct node* insert(){
     }
 }
 
-struct node* predecessor(struct node* root){
+struct node* successor(struct node* root){
     while(root->rchild!=NULL){
         root=root->rchild;
     }
@@ -47,7 +47,7 @@ struct node* predecessor(struct node* root){
 
 struct node* delete(struct node* root , int value){
     if(root == NULL){
-        printf("%d is not found in the tree.\n");
+        printf("%d is not found in the tree.\n",value);
         return root;
     }
     else if(value<root->data){
@@ -66,14 +66,14 @@ struct node* delete(struct node* root , int value){
             temp=root->rchild;
             free(root);
             return temp;
-        }
+        } 
         else if (root->rchild==NULL){
-            free(root);
             temp=root->lchild;
+            free(root);
             return temp;
         }
         else{
-            temp=predecessor(root->rchild);
+            temp=successor(root->rchild);
             root->data=temp->data;
             root->rchild = delete(root->rchild,temp->data);
         }
@@ -112,7 +112,7 @@ void postorder(struct node* root){
 int main(){
     int choice,value;
     while(1){
-        printf("\n1.insert\n2.delete\n3.pre-order\n4.in-order\n5.post-order\n6.search\n7.exit\nenter option: ");
+        printf("\n1.insert\n2.delete\n3.pre-order\n4.in-order\n5.post-order\n6.exit\nenter option: ");
         scanf("%d",&choice);
         switch(choice){
             case 1:
@@ -132,7 +132,7 @@ int main(){
             case 5:
                 postorder(root);
                 break;
-            case 7:
+            case 6:
                 exit(0);
                 break;
             default:
