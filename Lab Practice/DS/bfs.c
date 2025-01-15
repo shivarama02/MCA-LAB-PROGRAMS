@@ -81,27 +81,3 @@ int main(){
     }
     return 0;
 }
-int main(){
-    printf("Enter the number vertices: ");
-    scanf("%d",&n);
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            printf("adj[%d][%d]: ",i,j);
-            scanf("%d",&adj[i][j]);
-        }
-    }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            printf("%d ",adj[i][j]);
-        }
-        printf("\n");
-    }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            if(adj[i][j]==0){
-                adj[i][j]=__INT_MAX__;
-            }
-        }
-    }
-    kruskal();
-} 
