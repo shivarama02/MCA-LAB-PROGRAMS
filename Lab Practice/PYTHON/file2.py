@@ -16,6 +16,6 @@ with open("dict_csv.csv", "w", newline='') as wfile:
     csv_writer.writerows(mydict)
 
 with open("dict_csv.csv", "r") as rfile:
-    csv_reader=csv.DictReader(rfile, fieldnames=["name","place","age"])
+    csv_reader=csv.DictReader(rfile, fieldnames=["name","place"])
     for row in csv_reader:
         print(row)
