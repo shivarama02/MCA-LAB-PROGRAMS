@@ -61,7 +61,7 @@ class Acount:
 
     def receipt(self):
         print("------Transaction receipt------")
-        print("Acconut name: ",self.name)
+        print("Acconut holder name: ",self.name)
         print("Account number: ",self.acc_no)
         print("Account type: ",self.acc_type)
         print("Last transaction: ",self.transaction)
